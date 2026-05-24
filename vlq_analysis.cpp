@@ -1,35 +1,3 @@
-/*
- * vlq_analysis.cpp
- * Applies cuts C1-C6 for VLQ singlet B quark analysis (PRD 107, 115001)
- * Signal topology: pp -> B B~ -> (b Phi)(t W), Phi->gg or bb, W->lv or t->blv
- * Final state: exactly 1 lepton + >=1 b-jet + jets + AK12 fat jet (R=1.2)
- *
- * Uses Delphes-bundled FastJet + Nsubjettiness (no separate fastjet contrib install needed).
- *
- * Build:
- *   export DELPHES_DIR=/path/to/Delphes-3.x.x
- *   g++ -std=c++17 -O2 -o vlq_analysis vlq_analysis.cpp \
- *       $(root-config --cflags --libs) \
- *       -I${DELPHES_DIR} -I${DELPHES_DIR}/external \
- *       -L${DELPHES_DIR} -lDelphes
- *
- * Run:
- *   ./vlq_analysis <num_files> <input1.root> [input2.root ...] <output.txt>
- *
- * Example:
- *   ./vlq_analysis 1 tag_1_delphes_events.root output_MB1200.txt
- *
- * Paper Table II reference (MB=1200, MPhi=400, L=3 ab^-1):
- *   C1=2619  C2=1681  C3=1677  C4=1628  C5=1176  C6=1029
- *   Sequential efficiencies: C2/C1=64.2%, C3/C2=99.8%, C4/C3=97.1%,
- *                             C5/C4=72.2%, C6/C5=87.5%
- *
- * NOTE: C2 efficiency will differ from paper if only the hadronic-top
- *       sub-channel (t->bjj, W->lv) was generated. The paper includes
- *       both sub-channels (leptonic top t->blv + hadronic W also contributes).
- *       C4 efficiency is lower with Phi->gg than Phi->bb (fewer b-jets available).
- */
-
 // ─── Standard headers ────────────────────────────────────────────────────────
 #include <cmath>
 #include <cstdlib>
