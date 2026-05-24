@@ -33,6 +33,9 @@ PARAM_CARD_1800=/home2/manas.agrawal/VLQ_paper/vlq_paper/param_card_mbp_1800.dat
 cat > /tmp/mg5_vlq_signal_mbp1200.txt << EOF
 import model VLQ_SingB_plus_Phi_UFO/
 generate p p > bp bp~, (bp > b eta, eta > g g), (bp~ > t~ w+, (t~ > b~ j j), (w+ > l+ vl))
+add process p p > bp bp~, (bp > b eta, eta > g g), (bp~ > t~ w+, (t~ > b~ l- vl~), (w+ > j j))
+add process p p > bp bp~, (bp~ > b~ eta, eta > g g), (bp > t w-, (t > b j j), (w- > l- vl~))
+add process p p > bp bp~, (bp~ > b~ eta, eta > g g), (bp > t w-, (t > b l+ vl), (w- > j j))
 output ${OUTBASE}/VLQ_mbp1200
 launch ${OUTBASE}/VLQ_mbp1200
   shower=Pythia8
@@ -48,6 +51,9 @@ $MG5 /tmp/mg5_vlq_signal_mbp1200.txt
 cat > /tmp/mg5_vlq_signal_mbp1500.txt << EOF
 import model VLQ_SingB_plus_Phi_UFO/
 generate p p > bp bp~, (bp > b eta, eta > g g), (bp~ > t~ w+, (t~ > b~ j j), (w+ > l+ vl))
+add process p p > bp bp~, (bp > b eta, eta > g g), (bp~ > t~ w+, (t~ > b~ l- vl~), (w+ > j j))
+add process p p > bp bp~, (bp~ > b~ eta, eta > g g), (bp > t w-, (t > b j j), (w- > l- vl~))
+add process p p > bp bp~, (bp~ > b~ eta, eta > g g), (bp > t w-, (t > b l+ vl), (w- > j j))
 output ${OUTBASE}/VLQ_mbp1500
 launch ${OUTBASE}/VLQ_mbp1500
   shower=Pythia8
@@ -63,6 +69,9 @@ $MG5 /tmp/mg5_vlq_signal_mbp1500.txt
 cat > /tmp/mg5_vlq_signal_mbp1800.txt << EOF
 import model VLQ_SingB_plus_Phi_UFO/
 generate p p > bp bp~, (bp > b eta, eta > g g), (bp~ > t~ w+, (t~ > b~ j j), (w+ > l+ vl))
+add process p p > bp bp~, (bp > b eta, eta > g g), (bp~ > t~ w+, (t~ > b~ l- vl~), (w+ > j j))
+add process p p > bp bp~, (bp~ > b~ eta, eta > g g), (bp > t w-, (t > b j j), (w- > l- vl~))
+add process p p > bp bp~, (bp~ > b~ eta, eta > g g), (bp > t w-, (t > b l+ vl), (w- > j j))
 output ${OUTBASE}/VLQ_mbp1800
 launch ${OUTBASE}/VLQ_mbp1800
   shower=Pythia8
