@@ -70,7 +70,14 @@ Paper Link: [https://journals.aps.org/prd/pdf/10.1103/PhysRevD.107.115001]
 ### Step 3 : Generate the Signal event
 - copy the`Vlq_sing_b_plus_phi_ufo` inside the models folder inside your mg5 directory
 - start madgraph and import the VLQ model and use the following generate command :
-    `generate p p > bp bp~, (bp > b eta, eta > g g), (bp~ > t~ w+, (t~ > b~ j j), (w+ > l+ vl))`
+    ```
+        generate p p > bp bp~, (bp > b eta, eta > g g), (bp~ > t~ w+, (t~ > b~ j j), (w+ > l+ vl))
+        add process p p > bp bp~, (bp > b eta, eta > g g), (bp~ > t~ w+, (t~ > b~ l- vl~), (w+ > j j))
+        add process p p > bp bp~, (bp~ > b~ eta, eta > g g), (bp > t w-, (t > b j j), (w- > l- vl~))
+        add process p p > bp bp~, (bp~ > b~ eta, eta > g g), (bp > t w-, (t > b l+ vl), (w- > j j))
+        output BB_signal_MB1200_MPhi400_v2
+        launch BB_signal_MB1200_MPhi400_v2
+    ```
 - create an appropriate output directory (the process might take upto 16GBs of temporary storage and after completion might take around 3-4 GB of storage) and launch the process- select pythia and delphes and for the cards use the cards generated above ( this needs to be done three times one for each parameter card - the other cards remain the same)
 
 ### Step 4 : Generate the ROOT files for the Background events
@@ -83,6 +90,17 @@ Paper Link: [https://journals.aps.org/prd/pdf/10.1103/PhysRevD.107.115001]
 ---
 
 ### Step 5: Apply cuts to the signal Events:
+- In total we need to appy 6 cuts to the generated root files
+- Export the paths to Delphes, Fastjet and LD_Library using the following commands :
+    ```
+    export DELPHES_DIR=/path/to/Delphes-3.x.x
+    export FASTJET_DIR=$(fastjet-config --prefix)
+    export LD_LIBRARY_PATH=$DELPHES_DIR:$FASTJET_DIR/lib:$LD_LIBRARY_PATH
+    ```
+    - if you have the NSubjetiness bundles inside of Delphes you can avoid the FasJet Export
+- Compile the vlq_analysis.cpp using the following command 
+    `g++ -std=c++17 -O2 -o vlq_analysis vlq_analysis.cpp \ $(root-config --cflags --libs) \ -I${DELPHES_DIR} -I${DELPHES_DIR}/external \ -L${DELPHES_DIR} -lDelphes`
+- To run the script use the following command `./vlq_analysis 1 path_to_root_file output.txt` - here 1 is specifing the number of files
 
 
 
