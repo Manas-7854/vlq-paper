@@ -1,11 +1,11 @@
 
-Paper Link: 
+Paper Link: [https://journals.aps.org/prd/pdf/10.1103/PhysRevD.107.115001]
 
 
 ## Steps to reproduce the paper
 
 ### Step 1 : Clone the Repository and Generate the param cards
-- clone the Repository for with the vectorlikequarks model : github.com/rsrchtsm/vectorlikequarks
+- clone the Repository for with the vectorlikequarks model : [github.com/rsrchtsm/vectorlikequarks]
 - move into the `SingBPlusPhi/Vlq_sing_b_plus_phi_ufo` directory and the script for `write_param_card.py` (you must run this using python 2.7)
 - run the `compute_br.py` with the following MBP and Meta Value (change these in the for loop at the bottom)
     1. MBP 1200 and Meta 400
@@ -86,4 +86,4 @@ Paper Link:
 
 
 
-
+- For a proper installation of Madgraph Please follow the steps in `mg_setup.md`
